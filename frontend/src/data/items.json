@@ -1,0 +1,220 @@
+[
+    {
+      "id": 1,
+      "name": "TextBook",
+      "price": 10.99,
+      "imgUrl": "/imgs/book.jpg",
+      "category": "Education"
+    },
+    {
+      "id": 2,
+      "name": "Computer",
+      "price": 1199,
+      "imgUrl": "/imgs/computer.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 3,
+      "name": "Banana",
+      "price": 1.05,
+      "imgUrl": "/imgs/banana.jpg",
+      "category": "Food",
+      "discountPrice": 1.00
+    },
+    {
+      "id": 4,
+      "name": "Colored Pencils",
+      "price": 2.55,
+      "imgUrl": "/imgs/ColoredPencils.jpg",
+      "category": "Education"
+    },
+    {
+      "id": 5,
+      "name": "Car",
+      "price": 14000,
+      "imgUrl": "/imgs/car.jpg",
+      "category": "Vehicle"
+    },
+    {
+      "id": 6,
+      "name": "Nike Air Jordan 1",
+      "price": 125,
+      "imgUrl": "/imgs/nikeAirJordan1.jpg",
+      "category": "Shoes"
+    },
+    {
+      "id": 7,
+      "name": "Nike Dunks",
+      "price": 120,
+      "imgUrl": "/imgs/nikeDunk.jpg",
+      "category": "Shoes"
+    },
+    {
+      "id": 8,
+      "name": "Adidas Post Move Mid Top",
+      "price": 110,
+      "imgUrl": "/imgs/adidasPostMove.jpg",
+      "category": "Shoes"
+    },
+    {
+      "id": 9,
+      "name": "Womens Court Borough Low 2",
+      "price": 60,
+      "imgUrl": "/imgs/womensCourtBorough.png",
+      "category": "Shoes"
+    },
+    {
+      "id": 10,
+      "name": "Adidas Aqua Slide",
+      "price": 30,
+      "imgUrl": "/imgs/adidasAdiletteAquaSlide.jpg",
+      "category": "Shoes"
+    },
+    {
+      "id": 11,
+      "name": "iPhone 13",
+      "price": 600,
+      "imgUrl": "/imgs/iphone.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 12,
+      "name": "iPad Mini",
+      "price": 550,
+      "imgUrl": "/imgs/ipadMini.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 13,
+      "name": "Google Pixel Watch",
+      "price": 350,
+      "imgUrl": "/imgs/googlePixelWatch.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 14,
+      "name": "Alarm Clock",
+      "price": 17,
+      "imgUrl": "/imgs/alarmclock.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 15,
+      "name": "Markers",
+      "price": 4,
+      "imgUrl": "/imgs/Markers.jpg",
+      "category": "Education"
+    },
+    {
+      "id": 16,
+      "name": "Mechanical Pencils",
+      "price": 15,
+      "imgUrl": "/imgs/mechanicalPencil.jpg",
+      "category": "Education"
+    },
+    {
+      "id": 17,
+      "name": "Notebook",
+      "price": 16,
+      "imgUrl": "/imgs/notebook.jpg",
+      "category": "Education"
+    },
+    {
+      "id": 18,
+      "name": "Catan",
+      "price": 57,
+      "imgUrl": "/imgs/Catan.jpg",
+      "category": "Games"
+    },
+    {
+      "id": 19,
+      "name": "Yahtzee",
+      "price": 9,
+      "imgUrl": "/imgs/yahtzee.jpg",
+      "category": "Games"
+    },
+    {
+      "id": 20,
+      "name": "Citadels",
+      "price": 10,
+      "imgUrl": "/imgs/citadels.jpg",
+      "category": "Games"
+    },
+    {
+      "id": 21,
+      "name": "SweatShirt",
+      "price": 15,
+      "imgUrl": "/imgs/sweatshirt.jpg",
+      "category": "Clothes"
+    },
+    {
+      "id": 22,
+      "name": "Jeans",
+      "price": 15,
+      "imgUrl": "/imgs/jeans.jpg",
+      "category": "Clothes"
+    },
+    {
+      "id": 23,
+      "name": "Plain Black T-Shirt",
+      "price": 15,
+      "imgUrl": "/imgs/tshirt.jpg",
+      "category": "Clothes"
+    },
+    {
+      "id": 24,
+      "name": "Straw Hat",
+      "price": 16,
+      "imgUrl": "/imgs/strawhat.jpg",
+      "category": "Clothes"
+    },
+    {
+      "id": 25,
+      "name": "Khaki Pants",
+      "price": 28,
+      "imgUrl": "/imgs/khaki.jpg",
+      "category": "Clothes"
+    },
+    {
+      "id": 26,
+      "name": "Steak",
+      "price": 14,
+      "imgUrl": "/imgs/steak.jpg",
+      "category": "Food"
+    },
+    {
+      "id": 27,
+      "name": "2% Milk",
+      "price": 3,
+      "imgUrl": "/imgs/milk.png",
+      "category": "Food"
+    },
+    {
+      "id": 28,
+      "name": "Cheese",
+      "price": 2,
+      "imgUrl": "/imgs/cheese.jpg",
+      "category": "Food"
+    },
+    {
+      "id": 29,
+      "name": "Chocolate Chip Cookie",
+      "price": 3,
+      "imgUrl": "/imgs/cookie.jpg",
+      "category": "Food"
+    },
+    {
+      "id": 30,
+      "name": "Sorry",
+      "price": 9,
+      "imgUrl": "/imgs/sorry.jpg",
+      "category": "Games"
+    },
+    {
+      "id": 31,
+      "name": "Sorry",
+      "price": 20,
+      "imgUrl": "/imgs/monopoly.jpg",
+      "category": "Games"
+    }
+  ]
