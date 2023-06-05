@@ -10,19 +10,6 @@ export function Store() {
     const location  = useLocation();
     const [category, setCategory] = useState("All");
     const [searchTerm, setSearchTerm] = useState("");
-    // useEffect(() => {
-    //     const categoryCheck = categoryOptions.includes(location.state.data)
-    //     if(location.state=== null){
-    //         setCategory("All");
-    //         console.log(location.state,location.state.data)
-    //     } 
-    //     else if(categoryCheck){
-    //         setCategory(location.state.data)
-    //     } else if(!categoryCheck) {
-    //         setSearchTerm(location.state.data)
-    //     } 
-    //     window.history.replaceState({}, document.title)
-    // },[location]);
     const filteredItems = useMemo(() => {
 
         return allItems.filter((item) => {

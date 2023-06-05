@@ -1,8 +1,16 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
 import { useShoppingCart } from "../context/ShoppingCartContext"
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export function Navbar() {
+  const { isLoggedIn, logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    // Call the logout function
+    logout();
+  }
   const { openCart, cartQuantity } = useShoppingCart()
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
@@ -49,12 +57,18 @@ export function Navbar() {
             </div>
           </Button>
         )}
-        <Nav.Link to="/Login" as={NavLink} className="mx-3">
+        {isLoggedIn ? (
+          <button onClick={handleLogout}>Logout</button>
+        ) : (<>
+          <Nav.Link to="/Login" as={NavLink} className="mx-3">
             Login
           </Nav.Link>
-        <Nav.Link to="/Register" as={NavLink} className="mx-1">
+          <Nav.Link to="/Register" as={NavLink} className="mx-1">
             Register
-        </Nav.Link>
+          </Nav.Link>
+        </>
+        )}
+
       </Container>
     </NavbarBs>
   )

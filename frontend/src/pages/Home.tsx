@@ -2,11 +2,11 @@
 import allItems from "../data/items.json"
 import { Col, Row, Container, Card, Nav } from "react-bootstrap"
 import { FrontPageItem } from '../components/FrontPageItem';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import categoryOptions from "../data/categoryOptions.json"
 import { CarouselFrontPage } from "../components/Carousel";
 import { Link } from "react-router-dom";
-import React from "react";
+import { CategoryContext } from "../context/HomeContext";
 
 export function Home() {
   const [num, setNum] = useState(0);
@@ -18,22 +18,26 @@ export function Home() {
     const randomnum = (Math.floor(Math.random() * 6))
     setNum2(randomnum)
   }
-  const category = categoryOptions[num+1]
-  const category2 = categoryOptions[num2+1]
+  const newCategory = categoryOptions[num+1]
+  const newCategory2 = categoryOptions[num2+1]
   const firstFilteredItems= allItems.filter((item) => { 
-    return item.category === category
+    return item.category === newCategory
   })
   const secondFilteredItems= allItems.filter((item) => { 
-    return item.category === category2
+    return item.category === newCategory2
   })
+  const { category, setCategory } = useContext(CategoryContext);
+  const handleCategoryChange = (newCategory: string) => {
+    setCategory(newCategory);
+  }
   return (
     <>
 
       <CarouselFrontPage />
       <Container>
         <div className="d-flex justify-content-between mb-2 mt-4">
-        <h2>{category}..</h2>
-        <Link to='/Store'state= {{data: category}} className="link">see more</Link>
+        <h2>{newCategory}..</h2>
+        <Link to='/Store' onClick={() => handleCategoryChange(newCategory)} className="link">see more</Link>
 
 
         </div>
@@ -46,8 +50,8 @@ export function Home() {
         </Row>
 
         <div className="d-flex justify-content-between mb-2 mt-4">
-        <h2>{category2}..</h2>
-        <Link to='/Store'state= {{data: category}} className="link">see more</Link>
+        <h2>{newCategory2}..</h2>
+        <Link to='/Store'onClick={() => handleCategoryChange(newCategory2)} className="link">see more</Link>
 
 
         </div>

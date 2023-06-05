@@ -3,6 +3,7 @@ import { default as Axios, AxiosRequestConfig } from 'axios';
 export interface Credentials {
     username: string;
     password: string;
+    email: string;
 }
 const REACT_API_BASE_URL = "http://localhost:8080/"
 export const onLogin = async (data: Credentials) => {
