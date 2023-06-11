@@ -39,6 +39,7 @@ exports.signup = async (req, res) => {
 };
 
 exports.signin = async (req, res) => {
+  console.log("here")
   try {
     const user = await User.findOne({
       where: {

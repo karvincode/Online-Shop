@@ -58,7 +58,12 @@ export function Navbar() {
           </Button>
         )}
         {isLoggedIn ? (
+          <>
           <button onClick={handleLogout}>Logout</button>
+          <Nav.Link to="/Profile" as={NavLink} className="mx-3">
+            Profile
+          </Nav.Link>
+          </>
         ) : (<>
           <Nav.Link to="/Login" as={NavLink} className="mx-3">
             Login

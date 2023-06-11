@@ -2,13 +2,15 @@ import { Col, Row } from "react-bootstrap"
 import { StoreItem } from "../components/StoreItem"
 import allItems from "../data/items.json"
 import categoryOptions from "../data/categoryOptions.json"
-import { useEffect, useMemo, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { useLocation } from "react-router-dom"
+import { CategoryContext } from "../context/HomeContext";
+import { CategoryProvider } from "../context/HomeContext"
 
 
 export function Store() {
     const location  = useLocation();
-    const [category, setCategory] = useState("All");
+    const {category, setCategory }= useContext(CategoryContext);
     const [searchTerm, setSearchTerm] = useState("");
     const filteredItems = useMemo(() => {
 

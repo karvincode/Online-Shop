@@ -22,7 +22,7 @@ export function Register() {
             <Form onSubmit={register}>
                 <FormGroup className="mb-3" controlId="formBasicEmail">
                     <FormLabel>Email address</FormLabel>
-                    <FormControl type="username" placeholder="Enter email" value={username} onChange={(event)=> setCredentials({
+                    <FormControl type="email" placeholder="Enter email" value={email} onChange={(event)=> setCredentials({
                         username,
                         password,
                         email: event.target.value,

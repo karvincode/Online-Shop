@@ -10,17 +10,18 @@ import { Login } from "./pages/Login"
 import { Register } from "./pages/Register"
 import { AuthProvider } from "./context/AuthContext"
 import { CategoryProvider } from "./context/HomeContext"
+import { Profile } from "./pages/Profile"
 
 
 
 function App() {
 
   return (
+    <CategoryProvider>
     <ShoppingCartProvider>
       <AuthProvider>
         <Navbar />
         <Container className="mb-4">
-          <CategoryProvider>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Checkout" element={<Checkout />} />
@@ -28,11 +29,13 @@ function App() {
               <Route path="/About" element={<About />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Register" element={<Register />} />
+              <Route path="/Profile" element={<Profile />} />
             </Routes>
-          </CategoryProvider>
         </Container>
+
       </AuthProvider>
     </ShoppingCartProvider>
+    </CategoryProvider>
   )
 }
 

@@ -22,7 +22,7 @@ export function Login() {
         });
         console.log('Log In attempt');
         // Check if login is successful
-        if (response.status===200) {
+        if (response.status === 200) {
         login();
         };
     }
@@ -31,11 +31,11 @@ export function Login() {
             <h1>Login</h1>
             <Form onSubmit={login2}>
                 <FormGroup className="mb-3" controlId="formBasicUsername">
-                    <FormLabel>Email address</FormLabel>
+                    <FormLabel>Username</FormLabel>
                     <FormControl
-                        type="email"
+                        type="username"
                         placeholder="Enter Username"
-                        value={email}
+                        value={username}
                         onChange={(event) =>
                             setCredentials({
                                 username: event.target.value,
