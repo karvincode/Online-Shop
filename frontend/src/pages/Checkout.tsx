@@ -2,7 +2,7 @@
 // Needs to check to see if the customer is logged in
 //Either a pop up or redirect to a new page to get the address the items should be sent to.
 
-import { Stack } from "react-bootstrap"
+import { Button, Stack } from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency } from "../utilities/formatCurrency"
 import storeItems from "../data/items.json"
@@ -35,6 +35,9 @@ export function Checkout() {
               }, 0)
             )}
           </div>
+          <Button variant="primary" type="submit">
+                    Purchase
+          </Button>
     </Stack>
     </>
     )

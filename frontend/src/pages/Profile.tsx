@@ -1,21 +1,19 @@
-import {ListGroup,ListGroupItem} from "react-bootstrap"
+import { Col, ListGroup, ListGroupItem, Row } from "react-bootstrap"
+import MainBox from "../components/Mainbox"
+import Sidebar from "../components/Sidebar"
 
 export function Profile() {
-    return(
-        <>
-        <ListGroup>
-            <ListGroupItem>Profile</ListGroupItem>
-            <ListGroupItem>Security</ListGroupItem>
-            <ListGroupItem>Payment Information</ListGroupItem>
-            <ListGroupItem>Your Orders</ListGroupItem>
-        </ListGroup>
-        <ul className="list-group">
-            <li className="list-group-item active">Cras justo odio</li>
-            <li className="list-group-item">Dapibus ac facilisis in</li>
-            <li className="list-group-item">Morbi leo risus</li>
-            <li className="list-group-item">Porta ac consectetur ac</li>
-            <li className="list-group-item">Vestibulum at eros</li>
-        </ul>
-        </>
-    )
+  return (
+    <Row>
+      <Col xs={3}>
+        <Sidebar />
+      </Col>
+      <Col xs={9}>
+        <MainBox>
+          <p>This is additional content within the Main Box.</p>
+        </MainBox>
+      </Col>
+    </Row>
+
+  )
 }

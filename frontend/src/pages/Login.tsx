@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { Button, FormCheck, FormControl, FormGroup, FormLabel, FormText, Form } from "react-bootstrap";
 import { onLogin } from "../components/auth.api";
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import React from "react";
 
@@ -11,6 +12,11 @@ export function Login() {
         password: '',
         email: '',
     });
+    const [isChecked, setIsChecked] = useState(false);
+    const handleCheckboxChange = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
+        setIsChecked(event.target.checked);
+    };
+    const navigate = useNavigate();
     const { login } = useContext(AuthContext);
 
     const login2 = async (event: React.FormEvent) => {
@@ -23,7 +29,14 @@ export function Login() {
         console.log('Log In attempt');
         // Check if login is successful
         if (response.status === 200) {
-        login();
+            login();
+            if (!isChecked) {
+                navigate('/')
+            } else {
+                navigate('/Checkout')
+            }
+
+
         };
     }
     return (
@@ -65,7 +78,7 @@ export function Login() {
                     />
                 </FormGroup>
                 <FormGroup className="mb-3" controlId="formBasicCheckbox">
-                    <FormCheck type="checkbox" label="Check me out" />
+                    <FormCheck type="checkbox" label="Check me out" checked={isChecked} onChange={handleCheckboxChange} />
                 </FormGroup>
                 <Button variant="primary" type="submit">
                     Submit

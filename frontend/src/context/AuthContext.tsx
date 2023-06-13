@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode, useEffect } from 'react';
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -19,12 +19,21 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    if (storedLoginStatus) {
+      setIsLoggedIn(JSON.parse(storedLoginStatus));
+    }
+  }, []);
+
   const login = () => {
     setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', JSON.stringify(true));
   };
 
   const logout = () => {
     setIsLoggedIn(false);
+    localStorage.setItem('isLoggedIn', JSON.stringify(false));
   };
 
   const authContextValue: AuthContextType = {

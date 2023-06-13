@@ -2,6 +2,8 @@ import { Card } from "react-bootstrap"
 import storeItems from "../data/items.json"
 import { formatCurrency } from "../utilities/formatCurrency"
 import { Link } from "react-router-dom"
+import { CategoryContext } from "../context/HomeContext";
+import { useContext } from "react";
 
 type FrontPageItemProps = {
     id: number
@@ -12,10 +14,14 @@ type FrontPageItemProps = {
 }
 
 export function FrontPageItem({ id, name, price, imgUrl, discountPrice }: FrontPageItemProps) {
+    const { setSearchTerm } = useContext(CategoryContext);
+    const handleSearchTermChange = (searchTerm: string) => {
+        setSearchTerm(searchTerm);
+    }
     return (
 
         <Card className="h-100">
-            <Link to='/Store'state= {{data: name}} className="">
+            <Link style={{ textDecoration: 'none' }} to='/Store' onClick={() => handleSearchTermChange(name)} className="">
             <Card.Img
                 variant="top"
                 src={imgUrl}

@@ -1,15 +1,17 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 export function Navbar() {
   const { isLoggedIn, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     // Call the logout function
     logout();
+    navigate('/');
   }
   const { openCart, cartQuantity } = useShoppingCart()
   return (
@@ -59,7 +61,9 @@ export function Navbar() {
         )}
         {isLoggedIn ? (
           <>
-          <button onClick={handleLogout}>Logout</button>
+          <Nav.Link onClick={handleLogout} to="/" as={NavLink} className="mx-3">
+            Logout
+          </Nav.Link>
           <Nav.Link to="/Profile" as={NavLink} className="mx-3">
             Profile
           </Nav.Link>

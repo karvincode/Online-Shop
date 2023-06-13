@@ -4,15 +4,6 @@ const setupProxy = require("./app/setupProxy")
 const cors = require("cors"); // Import the cors module
 const app = express();
 
-// setupProxy(app);
-
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // Update with the origin of your client application
-//   res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
-//   res.header("Access-Control-Allow-Headers", "Content-Type");
-//   next();
-// });
-
 app.use(cors({origin:"*"}));
 
 // parse requests of content-type - application/json

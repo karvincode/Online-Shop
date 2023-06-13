@@ -10,16 +10,13 @@ import { CategoryProvider } from "../context/HomeContext"
 
 export function Store() {
     const location  = useLocation();
-    const {category, setCategory }= useContext(CategoryContext);
-    const [searchTerm, setSearchTerm] = useState("");
+    const {category, setCategory, searchTerm, setSearchTerm}= useContext(CategoryContext);
     const filteredItems = useMemo(() => {
-
         return allItems.filter((item) => {
-            
             if (category === "All") {
                 return true
             } else{
-            return item.category === category
+            return item.category === category;
             }
         }).filter((item)=> {
             if (searchTerm === "") {

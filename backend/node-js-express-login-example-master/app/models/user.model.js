@@ -11,5 +11,8 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
+  User.beforeCreate(async (user) => {
+    user.password = await bcrypt.hash(user.password, 8);
+  });
   return User;
 };

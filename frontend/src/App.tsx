@@ -11,12 +11,12 @@ import { Register } from "./pages/Register"
 import { AuthProvider } from "./context/AuthContext"
 import { CategoryProvider } from "./context/HomeContext"
 import { Profile } from "./pages/Profile"
-
-
+import { MainBoxProvider } from "./context/ProfileContext"
 
 function App() {
 
   return (
+    <MainBoxProvider>
     <CategoryProvider>
     <ShoppingCartProvider>
       <AuthProvider>
@@ -36,6 +36,7 @@ function App() {
       </AuthProvider>
     </ShoppingCartProvider>
     </CategoryProvider>
+    </MainBoxProvider>
   )
 }
 
