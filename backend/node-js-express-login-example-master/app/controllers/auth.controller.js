@@ -2,12 +2,13 @@ const crypto = require('crypto')
 const db = require("../models");
 const nodemailer = require('nodemailer');
 const config = require("../config/auth.config");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const User = db.user;
 const Role = db.role;
 const Op = db.Sequelize.Op;
-
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 exports.signup = async (req, res) => {
   // Save User to Database
@@ -99,6 +100,22 @@ exports.signout = async (req, res) => {
 
 // Generate a random reset token
 const sendPasswordResetEmail = (email, resetToken) => {
+  const msg = {
+    to: email, // Change to your recipient
+    from: 'onlineshopresponse@gmail.com', // Change to your verified sender
+    subject: 'Sending with SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  }
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Email sent')
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  
   // Create a transporter using your email service provider's SMTP settings
   const transporter = nodemailer.createTransport({
     service: 'onlineshopresponse', // e.g., 'Gmail', 'Outlook', 'SendGrid', etc.

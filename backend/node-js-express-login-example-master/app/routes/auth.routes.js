@@ -23,5 +23,7 @@ module.exports = function(app) {
 
   app.post("/api/auth/signout", controller.signout);
 
-  app.post("/api/auth/password/change", controller.changePassword)
+  app.post('/api/auth/password-reset/initiate', controller.initiatePasswordReset);
+
+  app.post('/api/auth/password-reset/reset', controller.resetPassword);
 };
