@@ -10,7 +10,7 @@ const MainBox: React.FC<MainBoxProps> = ({ children }) => {
   
     return (
       <div>
-        <p>Context: {mainBoxContext}</p>
+         {mainBoxContext}
         {children}
       </div>
     );

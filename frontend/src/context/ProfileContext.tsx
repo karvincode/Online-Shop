@@ -1,26 +1,27 @@
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, ReactNode } from 'react';
+import { useLocalStorage } from '../hook/useLocalStorage';
+import { Security } from '../components/ProfileComponents/SecurityComp';
 
 interface MainBoxContextType {
   mainBoxContext: ReactNode;
-  setMainBoxContext: (context: ReactNode) => void;
   changeMainBoxContext: (context: ReactNode) => void;
 }
 
 export const MainBoxContext = createContext<MainBoxContextType>({
   mainBoxContext: null,
-  setMainBoxContext: () => {},
   changeMainBoxContext: () => {},
 });
 
 export const MainBoxProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [mainBoxContext, setMainBoxContext] = useState<ReactNode>(null);
+  
+  const [mainBoxContext, setMainBoxContext] = useLocalStorage<ReactNode>('mbcontext', <Security/>);
 
   const changeMainBoxContext = (context: ReactNode) => {
     setMainBoxContext(context);
   };
 
   return (
-    <MainBoxContext.Provider value={{ mainBoxContext, setMainBoxContext, changeMainBoxContext }}>
+    <MainBoxContext.Provider value={{ mainBoxContext, changeMainBoxContext }}>
       {children}
     </MainBoxContext.Provider>
   );

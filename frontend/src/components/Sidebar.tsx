@@ -18,7 +18,7 @@ const Sidebar: React.FC = () => {
         Account Security
       </ListGroup.Item>
       <ListGroup.Item onClick={() => handleSidebarItemClick(<PaymentMethods />)}>
-        Payment Methods
+        Acceptable Payment Methods
       </ListGroup.Item>
       <ListGroup.Item onClick={() => handleSidebarItemClick(<Wishlist />)}>
         Wishlist

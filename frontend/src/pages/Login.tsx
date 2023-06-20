@@ -17,10 +17,13 @@ export function Login() {
         setIsChecked(event.target.checked);
     };
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+    const { login,setloggedinEmail,setloggedinUsername } = useContext(AuthContext);
 
     const login2 = async (event: React.FormEvent) => {
         event.preventDefault();
+        console.log(email)
+       
+        
         const response = await onLogin({
             username,
             password,
@@ -29,6 +32,8 @@ export function Login() {
         console.log('Log In attempt');
         // Check if login is successful
         if (response.status === 200) {
+            setloggedinEmail(response.data.email);
+            setloggedinUsername(response.data.username);
             login();
             if (!isChecked) {
                 navigate('/')

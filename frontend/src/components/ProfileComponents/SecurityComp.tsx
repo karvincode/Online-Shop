@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button, FormControl, FormGroup, FormLabel, Form } from "react-bootstrap";
 import { passwordChange } from "../auth.api";
+import { AuthContext } from "../../context/AuthContext";
 
 export function Security() {
   const [credentials, setCredentials] = useState({
@@ -8,7 +9,13 @@ export function Security() {
     password: "",
     email: "",
   });
+
+  const {loggedinEmail} = useContext(AuthContext)
   const [message, setMessage] = useState<string>("");
+
+  const consoleloghelp = () => {
+    console.log(loggedinEmail)
+  }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -19,7 +26,7 @@ export function Security() {
         username: credentials.username,
         password: credentials.password,
       });
-      setMessage(response as string);
+      setMessage(response.message as string);
     } catch (error) {
       setMessage(error as string);
     }
@@ -27,20 +34,24 @@ export function Security() {
 
   return (
     <>
+    <h2>
+                Account Security
+    </h2>
+      {message && <p>{message}</p>}
       <Form onSubmit={handleSubmit}>
         <FormGroup controlId="email">
           <FormLabel>Email</FormLabel>
           <FormControl
             type="email"
-            value={credentials.email}
+            value={loggedinEmail}
             readOnly
           />
         </FormGroup>
-        {message && <p>{message}</p>}
         <Button variant="primary" type="submit">
           Request Password Reset
         </Button>
       </Form>
+      <button onClick={consoleloghelp}>console</button>
     </>
   );
 }

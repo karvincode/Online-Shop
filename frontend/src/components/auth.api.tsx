@@ -40,7 +40,7 @@ export const onRegister = async (data: Credentials) => {
 export const passwordChange = async (data: Credentials)=> {
     const requestConfig: AxiosRequestConfig = {
         method: 'post',
-        url: REACT_API_BASE_URL + 'api/auth/password/change',
+        url: REACT_API_BASE_URL + 'api/auth/password/initiate',
         data
     }
     try {

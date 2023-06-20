@@ -10,7 +10,6 @@ export function Profile() {
       </Col>
       <Col xs={9}>
         <MainBox>
-          <p>This is additional content within the Main Box.</p>
         </MainBox>
       </Col>
     </Row>
