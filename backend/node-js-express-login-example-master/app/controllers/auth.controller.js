@@ -16,32 +16,30 @@ exports.signup = async (req, res) => {
     const user = await User.create({
       username: req.body.username,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 8),
+      password: req.body.password
     });
+    return res.status(500).send({ message: "User registered successfully!" });
+    // if (req.body.roles) {
+    //   const roles = await Role.findAll({
+    //     where: {
+    //       name: {
+    //         [Op.or]: req.body.roles,
+    //       },
+    //     },
+    //   });
 
-    if (req.body.roles) {
-      const roles = await Role.findAll({
-        where: {
-          name: {
-            [Op.or]: req.body.roles,
-          },
-        },
-      });
-
-      const result = user.setRoles(roles);
-      if (result) res.send({ message: "User registered successfully!" });
-    } else {
-      // user has role = 1
-      const result = user.setRoles([1]);
-      if (result) res.send({ message: "User registered successfully!" });
-    }
+    //   // const result = user.setRoles(roles);
+    //   res.send({ message: "User registered successfully!" });
+    // } else {
+    //   // user has role = 1
+    //  res.send({ message: "User registered successfully!" });
+    // }
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    return res.status(500).send({ message: error.message });
   }
 };
 
 exports.signin = async (req, res) => {
-  console.log("here")
   try {
     const user = await User.findOne({
       where: {
@@ -57,13 +55,12 @@ exports.signin = async (req, res) => {
       req.body.password,
       user.password
     );
-
+      console.log(user.password,req.body.password, passwordIsValid)
     if (!passwordIsValid) {
       return res.status(401).send({
         message: "Invalid Password!",
       });
     }
-
     const token = jwt.sign({ id: user.id }, config.secret, {
       expiresIn: 86400, // 24 hours
     });
@@ -99,6 +96,20 @@ exports.signout = async (req, res) => {
 };
 
 // Generate a random reset token
+const generateResetToken = () => {
+  const length = 20; // Length of the reset token
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let token = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    token += characters.charAt(randomIndex);
+  }
+
+  return token;
+};
+
+
 const sendPasswordResetEmail = (email, resetToken) => {
   const msg = {
     to: email, // Change to your recipient
@@ -171,6 +182,7 @@ exports.initiatePasswordReset = async (req, res) => {
     return res.status(500).send({ message: error.message });
   }
 };
+
 
 exports.resetPassword = async (req, res) => {
   const { email, resetToken, newPassword } = req.body;

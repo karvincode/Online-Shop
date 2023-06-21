@@ -17,7 +17,7 @@ export function Login() {
         setIsChecked(event.target.checked);
     };
     const navigate = useNavigate();
-    const { login,setloggedinEmail,setloggedinUsername } = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
 
     const login2 = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -32,8 +32,8 @@ export function Login() {
         console.log('Log In attempt');
         // Check if login is successful
         if (response.status === 200) {
-            setloggedinEmail(response.data.email);
-            setloggedinUsername(response.data.username);
+            localStorage.setItem('username', response.data.username);
+            localStorage.setItem('email', response.data.email);
             login();
             if (!isChecked) {
                 navigate('/')
@@ -62,9 +62,6 @@ export function Login() {
                             })
                         }
                     />
-                    <FormText className="text-muted">
-                        We'll never share your email with anyone else.
-                    </FormText>
                 </FormGroup>
 
                 <FormGroup className="mb-3" controlId="formBasicPassword">
