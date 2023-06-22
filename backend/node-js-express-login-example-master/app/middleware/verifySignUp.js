@@ -5,6 +5,12 @@ const User = db.user;
 checkDuplicateUsernameOrEmail = async (req, res, next) => {
   try {
     // Username
+    if (!req.body.username || req.body.username.trim() === "") {
+      return res.status(400).send({
+        message: "Failed! Username cannot be empty!"
+      });
+    }
+
     let user = await User.findOne({
       where: {
         username: req.body.username
@@ -18,6 +24,11 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
     }
 
     // Email
+    if (!req.body.email || req.body.email.trim() === "") {
+      return res.status(400).send({
+        message: "Failed! Email cannot be empty!"
+      });
+    }
     user = await User.findOne({
       where: {
         email: req.body.email

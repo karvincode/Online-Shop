@@ -12,10 +12,16 @@ export const onLogin = async (data: Credentials) => {
         url: REACT_API_BASE_URL + 'api/auth/signin',
         data
     }
+    try {
         const response = await Axios.request(requestConfig);
-        console.log(response,response.data.message)
-        return response;
-
+        return response
+    } catch (e) {
+        if (e instanceof AxiosError) {
+            // 
+            console.log(e,  e?.response?.data.message)
+            return e?.response?.data.message;
+       }
+    }
     } 
     
 export const onRegister = async (data: Credentials) => {

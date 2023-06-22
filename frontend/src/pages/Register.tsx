@@ -14,15 +14,12 @@ export function Register() {
   const register = async (event: React.FormEvent) => {
     event.preventDefault();
     const response = await onRegister(credentials);
-
-    console.log("Register attempt");
     if (!response ) {
         setRegisterSuccess(false);
         // Handle successful registration
     } else {
         // Handle registration failure
         setRegisterError(response)
-        console.error(response);
   }
   };
 

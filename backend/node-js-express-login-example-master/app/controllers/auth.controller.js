@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
       email: req.body.email,
       password: req.body.password
     });
-    return res.status(500).send({ message: "User registered successfully!" });
+    return res.status(200).send({ message: "User registered successfully!" });
     // if (req.body.roles) {
     //   const roles = await Role.findAll({
     //     where: {

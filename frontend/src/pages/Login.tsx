@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useContext } from "react";
-import { Button, FormCheck, FormControl, FormGroup, FormLabel, FormText, Form } from "react-bootstrap";
+import { Button, FormCheck, FormControl, FormGroup, FormLabel, FormText, Form, Alert } from "react-bootstrap";
 import { onLogin } from "../components/auth.api";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
@@ -18,12 +18,10 @@ export function Login() {
     };
     const navigate = useNavigate();
     const { login } = useContext(AuthContext);
-
+    const [loginFail, setLoginFailure] = useState(false);
+    const [message, setMessage] = useState<string>("");
     const login2 = async (event: React.FormEvent) => {
         event.preventDefault();
-        console.log(email)
-       
-        
         const response = await onLogin({
             username,
             password,
@@ -40,8 +38,9 @@ export function Login() {
             } else {
                 navigate('/Checkout')
             }
-
-
+        } else{
+            setLoginFailure(true)
+            setMessage(response)
         };
     }
     return (
@@ -79,6 +78,12 @@ export function Login() {
                         }
                     />
                 </FormGroup>
+                {loginFail ? (
+                <>
+                    <Alert variant="danger">{message}</Alert>
+                </>
+                ):
+                ( <></> )}
                 <FormGroup className="mb-3" controlId="formBasicCheckbox">
                     <FormCheck type="checkbox" label="Check me out" checked={isChecked} onChange={handleCheckboxChange} />
                 </FormGroup>
