@@ -1,5 +1,7 @@
 # Online-Shop
-Backend And Front end of an online shop
-I took out the password change request support since I was getting too many spam emails.
+Backend And Frontend of an Online Shop
+I removed the password change request support because I got too many spam emails and it was annoying talking to there support team.
 
-Run the frontend via npm run dev and to run the backend in the node-js-express-login-example-master folder use node server.js
+Instructions to run locally:
+1. Run the frontend via npm run dev
+2. Run the backend in the node-js-express-login-example-master folder and in that folder via node server.js
